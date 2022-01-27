@@ -47,6 +47,10 @@ module.exports = {
           'stylus-loader',
         ],
       },
+      {
+        test: /\.(png|jpg)$/,
+        type: 'asset/resource',
+      },
     ],
   },
   devServer: {
