@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
-import '../styles/components/Checkout.styl';
+import '@styles/components/Checkout.styl';
 
 const Checkout = (props) => {
   const { cart } = props;

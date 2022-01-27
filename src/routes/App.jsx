@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
-import Home from '../containers/Home';
-import Checkout from '../containers/Checkout';
-import Layout from '../components/Layout';
-import NotFound from '../containers/NotFound';
-import useInitialState from '../hooks/useInitialState';
-import AppContext from '../context/AppContext';
+import Home from '@containers/Home';
+import Checkout from '@containers/Checkout';
+import Layout from '@components/Layout';
+import NotFound from '@containers/NotFound';
+import useInitialState from '@hooks/useInitialState';
+import AppContext from '@context/AppContext';
 const App = () => {
   const initialState = useInitialState();
   const isEmpty = Object.keys(initialState.products).length;
