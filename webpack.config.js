@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CSSMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// Comprimir imagenes
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -52,7 +54,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg)$/,
-        type: 'asset/resource',
+        type: 'asset',
       },
     ],
   },
@@ -67,6 +69,14 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
+    }),
+    new CleanWebpackPlugin(),
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        plugins: [
+          ['optipng', { optimizationLevel: 5 }],
+        ],
+      },
     }),
   ],
   optimization: {
