@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '@styles/components/Header.styl';
+import Title from '@components/Title';
 import logo from '@assets/logo-gndx.png';
 
 const Header = props => (
@@ -9,7 +10,7 @@ const Header = props => (
     <h1 className="Header-title">
       <Link to="/">
         <img src={logo} alt="logo" width="32" />
-        Platzi Store
+        <Title title="Platzi Store" />
       </Link>
     </h1>
     <div className="Header-checkout">
