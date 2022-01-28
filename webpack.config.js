@@ -71,19 +71,22 @@ module.exports = {
       filename: 'assets/[name].css',
     }),
     new CleanWebpackPlugin(),
-    new ImageMinimizerPlugin({
-      minimizerOptions: {
-        plugins: [
-          ['optipng', { optimizationLevel: 5 }],
-        ],
-      },
-    }),
   ],
   optimization: {
     minimize: true,
     minimizer: [
       new CSSMinimizerPlugin(),
       new TerserPlugin(),
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              ["optipng", { optimizationLevel: 5 }],
+            ]
+          }
+        }
+      }),
     ]
   },
 };
