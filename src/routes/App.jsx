@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { hot } from 'react-hot-loader/root';
 
 import Home from '@containers/Home';
 import Checkout from '@containers/Checkout';
@@ -31,4 +32,4 @@ const App = () => {
   )
 };
 
-export default App;
+export default hot(App); 
