@@ -1,7 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import { hot } from 'react-hot-loader/root';
+// import React from 'react';
 import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+// import { hot } from 'react-hot-loader/root';
 
 import Home from '@containers/Home';
 import Checkout from '@containers/Checkout';
@@ -25,7 +25,7 @@ const App = () => {
             <Layout>
               <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/checkout" element={<Checkout />} />
+                <Route exact path="/checkout" element={<Checkout />} component={AsyncCheckoutContainer} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Layout>
@@ -38,4 +38,5 @@ const App = () => {
   )
 };
 
-export default hot(App); 
+// export default hot(App); 
+export default App; 
