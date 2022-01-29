@@ -8,11 +8,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
-  // entry: ['react-hot-loader/patch', './src'],
+  entry: {
+    home: './src/index.js',
+    header: './src/Header/index.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    // filename: 'bundle.js',
+    chunkFilename: '[name].bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.tsx'],
