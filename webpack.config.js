@@ -8,10 +8,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
+  // entry: './src/index.js',
+  entry: { // 1) Add entry points
+    home: './src/index.js',
+    header: './src/Header/index.js',
+  },
+  output: { // 2) Add chunkFilename
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    chunkFilename: '[name].bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.tsx'],
@@ -92,6 +97,33 @@ module.exports = {
           }
         }
       }),
-    ]
+    ],
+    splitChunks: { 
+    // 3) Permite establecer condiguraciones 
+    // de lo que se quiere separar (commons, vendors)
+      chunks: 'all',
+      cacheGroups: {
+        default: false,
+        commons: { // Add react & react-dom
+          // busqueda de recursos según regex
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/, 
+          chunks: 'all',
+          name: 'commons',
+          filename: 'assets/common.[chunkhash].js',
+          reuseExistingChunk: true, // Reusar
+          enforce: true, // 
+          priority: 20, // Prioridad
+        },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: 'all',
+          name: 'vendors',
+          filename: 'assets/vendor.[chunkhash].js',
+          reuseExistingChunk: true,
+          enforce: true,
+          priority: 10,
+        },
+      },
+    },
   },
 };
